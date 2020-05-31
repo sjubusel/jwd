@@ -15,7 +15,7 @@ public class Task01 {
     }
 
     private static double getValueUnlessItIsDouble(String variableName) {
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().trim();
         if (isDouble(input)) {
             return Double.parseDouble(input);
         } else {
