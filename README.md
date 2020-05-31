@@ -7,4 +7,4 @@ an aforementioned training.
 <br/>
 Best regards,<br/>
 Siarhei Busel<br/>
-[sergey.busel@tut.by](mailto:sergey.busel@tut.by)
+sergey.busel@tut.by
