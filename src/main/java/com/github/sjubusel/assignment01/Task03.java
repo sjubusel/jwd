@@ -39,7 +39,7 @@ public class Task03 {
         return ((a > b) && (b > c));
     }
 
-    private static void printCurrentValues(double a, double b, double c) {
+    private static void printValues(double a, double b, double c) {
         System.out.println("The current values are:");
         System.out.printf("- %s is %g%n", variableName[0], a);
         System.out.printf("- %s is %g%n", variableName[1], b);
@@ -59,6 +59,6 @@ public class Task03 {
             b = Math.abs(b);
             c = Math.abs(c);
         }
-        printCurrentValues(a, b, c);
+        printValues(a, b, c);
     }
 }
