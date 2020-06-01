@@ -9,16 +9,16 @@ public class Task02 {
     private static int[] daysPerMonth = new int[]{31, 28, 31, 30, 31, 30, 31, 31,
             30, 31, 30, 31};
 
-    private static int getValidOrdinalNumberOfDay() {
+    private static int getValidOrdinalDayNumberFromConsole() {
         String input = scanner.nextLine();
         if (isInteger(input)) {
             int dayNumber = Integer.parseInt(input);
             return (isValid(dayNumber))
                     ? dayNumber
-                    : getValidOrdinalNumberOfDay();
+                    : getValidOrdinalDayNumberFromConsole();
         } else {
             informAboutInvalidScannerInput();
-            return getValidOrdinalNumberOfDay();
+            return getValidOrdinalDayNumberFromConsole();
         }
     }
 
@@ -54,13 +54,12 @@ public class Task02 {
     public static void main(String[] args) {
         System.out.println("Please, input an ordinal number");
         System.out.println("of any day of a common (non-leap) year");
-        int ordinalDayNumber = getValidOrdinalNumberOfDay();
+        int ordinalDayNumber = getValidOrdinalDayNumberFromConsole();
 
         int[] dateAndMonth = calculateDateAndMonthBy(ordinalDayNumber);
         System.out.printf("Day \"%s\" and Month \"%s\" conform to",
                 dateAndMonth[0], dateAndMonth[1]);
         System.out.printf(" an ordinal day number \"%s\"%n",
                 ordinalDayNumber);
-
     }
 }
