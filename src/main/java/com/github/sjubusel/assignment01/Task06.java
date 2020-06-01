@@ -62,11 +62,28 @@ public class Task06 {
 
     private static long getNInDescendingOrder(double a1, double d,
                                               double min) {
-        double sum;
+        double sum = 0;
         double aN;
         long n = 1;
         long nStep = 10000;
-        return 0;
+        while (sum >= min) {
+            aN = a1 + (n - 1) * d;
+            sum = (a1 + aN) * n / 2;
+            n += nStep;
+        }
+        return getNInDescendingOrder(a1, d, min, n - nStep * 2);
+    }
+
+    private static long getNInDescendingOrder(double a1, double d, double min,
+                                              long nMin) {
+        double sum = 0;
+        double aN;
+        long n = nMin;
+        while (sum >= min) {
+            aN = a1 + (n - 1) * d;
+            sum = (a1 + aN) * n++ / 2;
+        }
+        return --n;
     }
 
     public static void main(String[] args) {
@@ -76,12 +93,18 @@ public class Task06 {
         System.out.println("Please, insert a common difference.");
         double commonDifference = getDoubleFromConsole();
 
-        long nThTermIfIntegerMax = getN(initialTerm,
-                commonDifference, Integer.MIN_VALUE, Integer.MAX_VALUE);
-        System.out.println(nThTermIfIntegerMax);
-        long nThTermIfLongMax = getN(initialTerm,
-                commonDifference, Long.MIN_VALUE, Long.MAX_VALUE);
-        System.out.println(nThTermIfLongMax);
+        long nThTermIfIntegerMax = getN(initialTerm, commonDifference,
+                Integer.MIN_VALUE, Integer.MAX_VALUE);
+        System.out.printf("The sum of an arithmetic progression exceed"
+                        + " Integer type boundaries, when \"N\" = %d%n",
+                nThTermIfIntegerMax);
+
+        long nThTermIfLongMax = getN(initialTerm, commonDifference,
+                Long.MIN_VALUE, Long.MAX_VALUE);
+        System.out.printf("The sum of an arithmetic progression exceed"
+                        + " Long type boundaries, when \"N\" = %d%n",
+                nThTermIfLongMax);
+
 
     }
 }
