@@ -36,6 +36,8 @@ public class Task07 {
     }
 
     public static void main(String[] args) {
+        System.out.printf("Please, insert a real number%nin the following"
+                + " format:%n\"%s\".%n", "nnn.ddd");
         double realNumber = getValidDoubleFromConsole();
         int integralPart = (int) Math.floor(realNumber);
         long fractionalPart = getFractionalPart(realNumber, integralPart);
