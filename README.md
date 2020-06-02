@@ -1,4 +1,4 @@
-# Java Web Development training
+# Java Web Development Training
 This repository is used in order to hand in assignments while passing
 an aforementioned training.
 
