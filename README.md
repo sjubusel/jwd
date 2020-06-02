@@ -2,7 +2,8 @@
 This repository is used in order to hand in assignments while passing
 an aforementioned training.
 
-> Assignment 01 is under the following path:<br/>"src/main/java/com/github/sjubusel/assignment01"
+> Assignment 01 [(statement)](http://google.com) is under the following
+> path:<br/>"src/main/java/com/github/sjubusel/assignment01"
 
 <br/>
 Best regards,<br/>
