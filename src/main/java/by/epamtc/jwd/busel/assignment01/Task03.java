@@ -1,4 +1,4 @@
-package com.github.sjubusel.assignment01;
+package by.epamtc.jwd.busel.assignment01;
 
 import java.util.Scanner;
 import java.util.regex.Pattern;
