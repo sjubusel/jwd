@@ -26,12 +26,12 @@ public class Task07 {
                 + "An acceptable format is \"nnn.ddd\".");
     }
 
-    private static long getFractionalPart(double realNumber, int integralPart) {
+    private static int getFractionalPart(double realNumber, int integralPart) {
         double delta = realNumber - integralPart;
-        return Math.round(delta * 1000);
+        return (int) (delta * 1000);
     }
 
-    private static double compute(int integralPart, long fractionalPart) {
+    private static double compute(int integralPart, int fractionalPart) {
         return (fractionalPart + (integralPart / 1000.0));
     }
 
@@ -39,8 +39,8 @@ public class Task07 {
         System.out.printf("Please, insert a real number%nin the following"
                 + " format:%n\"%s\".%n", "nnn.ddd");
         double realNumber = getValidDoubleFromConsole();
-        int integralPart = (int) Math.floor(realNumber);
-        long fractionalPart = getFractionalPart(realNumber, integralPart);
+        int integralPart = (int) realNumber;
+        int fractionalPart = getFractionalPart(realNumber, integralPart);
 
         double newRealNumber = compute(integralPart, fractionalPart);
         System.out.printf("A new real number:%n%.3f%n", newRealNumber);
