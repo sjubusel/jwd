@@ -3,33 +3,28 @@ package by.epamtc.jwd.busel.assignment01;
 import java.util.Scanner;
 
 public class Task10 {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    private static long initialiseValidFirstNumber() {
-        long firstNumber;
+    private static long initialiseValidNonZeroNumberFromConsole() {
+        long number;
         while (true) {
-            firstNumber = getWholeNumberFromConsole();
-            if (firstNumber != 0) {
+            number = getWholeNumberFromConsole();
+            if (number != 0) {
                 break;
             } else {
                 reportNecessityOfNonZeroNumbers();
             }
         }
-        return firstNumber;
+        return number;
     }
 
     private static long getWholeNumberFromConsole() {
-        long number;
-        while (true) {
-            if (scanner.hasNextLong()) {
-                number = scanner.nextLong();
-                break;
-            } else {
-                System.out.println("Invalid input");
-                scanner.next();
-            }
+        if (scanner.hasNextLong()) {
+            return scanner.nextLong();
+        } else {
+            System.out.printf("Invalid input \"%s\"%n", scanner.next());
+            return getWholeNumberFromConsole();
         }
-        return number;
     }
 
     private static void reportNecessityOfNonZeroNumbers() {
@@ -55,24 +50,16 @@ public class Task10 {
         StringBuilder sequenceOfNumbers = new StringBuilder();
         String delimiter = ", ";
 
-        long firstNumber = initialiseValidFirstNumber();
+        long firstNumber = initialiseValidNonZeroNumberFromConsole();
         sequenceOfNumbers.append(firstNumber);
+        long secondNumber = initialiseValidNonZeroNumberFromConsole();
 
-        int counter = 1;
-        long secondNumber;
         boolean isAscending = true;
         boolean hasEqualNeighbours = false;
         boolean isAlternating = true;
-        while (true) {
-            secondNumber = getWholeNumberFromConsole();
-            if (secondNumber == 0) {
-                if (counter >= 2) {
-                    break;
-                } else {
-                    reportNecessityOfNonZeroNumbers();
-                    continue;
-                }
-            }
+
+        while (secondNumber != 0) {
+            sequenceOfNumbers.append(delimiter).append(secondNumber);
             if (firstNumber >= secondNumber) {
                 isAscending = false;
             }
@@ -83,11 +70,11 @@ public class Task10 {
                 isAlternating = false;
             }
             firstNumber = secondNumber;
-            counter++;
-            sequenceOfNumbers.append(delimiter).append(secondNumber);
+            secondNumber = getWholeNumberFromConsole();
         }
 
         printInfoAboutSequenceOfNumbers(sequenceOfNumbers.toString(),
                 isAscending, hasEqualNeighbours, isAlternating);
+        scanner.close();
     }
 }
