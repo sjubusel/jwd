@@ -1,55 +1,47 @@
 package by.epamtc.jwd.busel.assignment01;
 
+import java.util.Locale;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Task03 {
-    private static final String SCALAR = "(-?[0-9]+)([.][0-9Ee]+)?";
-    private static Scanner scanner = new Scanner(System.in);
-    private static String[] variableName = {"a", "b", "c"};
+    private static Scanner scanner = new Scanner(System.in).useDelimiter("\n")
+            .useLocale(Locale.US);
 
-    private static double getDoubleFromConsoleNamedAs(String variableName) {
-        System.out.printf("Please, insert a value of a \"%s\" variable.%n",
-                variableName);
-        return getValueUnlessItIsDouble(variableName);
-    }
-
-    private static double getValueUnlessItIsDouble(String variableName) {
-        String input = scanner.nextLine().trim();
-        if (isDouble(input)) {
-            return Double.parseDouble(input);
+    private static double getDoubleFromConsole() {
+        if (scanner.hasNextDouble()) {
+            return scanner.nextDouble();
         } else {
-            informAboutInvalidScannerInput();
-            return getDoubleFromConsoleNamedAs(variableName);
+            informAboutInvalidScannerInput(scanner.next());
+            return getDoubleFromConsole();
         }
     }
 
-    private static boolean isDouble(String input) {
-        return Pattern.matches(SCALAR, input);
-    }
-
-    private static void informAboutInvalidScannerInput() {
-        System.out.println("You have entered an invalid token,");
-        System.out.println("because it can not be translated");
-        System.out.println("into a valid double value!\n");
+    private static void informAboutInvalidScannerInput(String input) {
+        System.out.printf("You have entered an invalid token \"%s\","
+                + " because it can not be translated into a valid"
+                + " double value!\n", input);
     }
 
     private static boolean doValuesMeetCondition(double a, double b,
-                                                 double c) {
+            double c) {
         return ((a > b) && (b > c));
     }
 
     private static void printValues(double a, double b, double c) {
         System.out.println("The current values are:");
-        System.out.printf("- %s is %g%n", variableName[0], a);
-        System.out.printf("- %s is %g%n", variableName[1], b);
-        System.out.printf("- %s is %g%n", variableName[2], c);
+        System.out.printf("- %s is %g%n", "a", a);
+        System.out.printf("- %s is %g%n", "b", b);
+        System.out.printf("- %s is %g%n", "c", c);
     }
 
     public static void main(String[] args) {
-        double a = getDoubleFromConsoleNamedAs(variableName[0]);
-        double b = getDoubleFromConsoleNamedAs(variableName[1]);
-        double c = getDoubleFromConsoleNamedAs(variableName[2]);
+        System.out.println("Please, insert a value of a \"a\" variable.");
+        double a = getDoubleFromConsole();
+        System.out.println("Please, insert a value of a \"b\" variable.");
+        double b = getDoubleFromConsole();
+        System.out.println("Please, insert a value of a \"c\" variable.");
+        double c = getDoubleFromConsole();
+
         if (doValuesMeetCondition(a, b, c)) {
             a *= 2;
             b *= 2;
