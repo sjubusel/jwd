@@ -24,12 +24,13 @@ public class Task08 {
                 + " double value!%n", input);
     }
 
-    //TODO create javaDoc
+    //TODO create javaDoc in order to clarify
     private static Map<Double, Double> getFunctionValues(double openingPoint,
             double closingPoint, double step) {
         Map<Double, Double> pairsXY = new LinkedHashMap<>();
         int accuracy = getAccuracyAfterPoint(openingPoint, step);
-        for (double x = openingPoint; x <= closingPoint; ) {
+        double x = openingPoint;
+        while (x <= closingPoint) {
             double y = computeFunction(x);
             pairsXY.putIfAbsent(x, y);
             x = getAccurateValue(x + step, accuracy);
