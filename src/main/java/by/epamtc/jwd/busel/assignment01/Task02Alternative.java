@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Task02Alternative {
     private static Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
-    private static int getValidOrdinalDayNumberFromConsole() {
+    private static int receiveValidOrdinalDayNumberFromConsole() {
         if (scanner.hasNextInt()) {
             int dayNumber = scanner.nextInt();
             if (isValid(dayNumber)) {
@@ -18,7 +18,7 @@ public class Task02Alternative {
         } else {
             informAboutInvalidScannerInput(scanner.next());
         }
-        return getValidOrdinalDayNumberFromConsole();
+        return receiveValidOrdinalDayNumberFromConsole();
     }
 
     private static boolean isValid(int dayNumber) {
@@ -31,7 +31,7 @@ public class Task02Alternative {
                 + " a valid int value!\n", input);
     }
 
-    private static NonLeapYearDate getDateBy(int ordinalDayNumber) {
+    private static NonLeapYearDate computeDateBy(int ordinalDayNumber) {
         int day = ordinalDayNumber;
         int month = 0;
         switch (month) {
@@ -111,9 +111,9 @@ public class Task02Alternative {
     public static void main(String[] args) {
         System.out.println("Please, input an ordinal number of any day of"
                 + " a common (non-leap) year");
-        int ordinalDayNumber = getValidOrdinalDayNumberFromConsole();
+        int ordinalDayNumber = receiveValidOrdinalDayNumberFromConsole();
 
-        NonLeapYearDate date = getDateBy(ordinalDayNumber);
+        NonLeapYearDate date = computeDateBy(ordinalDayNumber);
         System.out.printf("Day \"%s\" and Month \"%s\" conform to",
                 date.getDayNumber(), date.getMonthNumber());
         System.out.printf(" an ordinal day number \"%s\".%n",

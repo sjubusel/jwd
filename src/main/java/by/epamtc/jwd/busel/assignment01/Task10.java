@@ -8,7 +8,7 @@ public class Task10 {
     private static long initialiseValidNonZeroNumberFromConsole() {
         long number;
         while (true) {
-            number = getWholeNumberFromConsole();
+            number = receiveWholeNumberFromConsole();
             if (number != 0) {
                 break;
             } else {
@@ -18,12 +18,12 @@ public class Task10 {
         return number;
     }
 
-    private static long getWholeNumberFromConsole() {
+    private static long receiveWholeNumberFromConsole() {
         if (scanner.hasNextLong()) {
             return scanner.nextLong();
         } else {
             System.out.printf("Invalid input \"%s\"%n", scanner.next());
-            return getWholeNumberFromConsole();
+            return receiveWholeNumberFromConsole();
         }
     }
 
@@ -70,7 +70,7 @@ public class Task10 {
                 isAlternating = false;
             }
             firstNumber = secondNumber;
-            secondNumber = getWholeNumberFromConsole();
+            secondNumber = receiveWholeNumberFromConsole();
         }
 
         printInfoAboutSequenceOfNumbers(sequenceOfNumbers.toString(),

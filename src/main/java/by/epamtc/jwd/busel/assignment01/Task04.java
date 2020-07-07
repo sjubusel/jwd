@@ -7,12 +7,12 @@ public class Task04 {
     private static Scanner scanner = new Scanner(System.in).useDelimiter("\n")
             .useLocale(Locale.US);
 
-    private static double getDoubleFromConsole() {
+    private static double receiveDoubleFromConsole() {
         if (scanner.hasNextDouble()) {
             return scanner.nextDouble();
         } else {
             informAboutInvalidScannerInput(scanner.next());
-            return getDoubleFromConsole();
+            return receiveDoubleFromConsole();
         }
     }
 
@@ -32,7 +32,7 @@ public class Task04 {
 
     public static void main(String[] args) {
         System.out.println("Please, input any real number");
-        double x = getDoubleFromConsole();
+        double x = receiveDoubleFromConsole();
         double y = computeFunction(x);
 
         System.out.printf("The value of function \"y\" equals to %g%n", y);

@@ -9,12 +9,12 @@ public class Task08 {
     private static Scanner scanner = new Scanner(System.in).useDelimiter("\n")
             .useLocale(Locale.US);
 
-    private static double getDoubleFromConsole() {
+    private static double receiveDoubleFromConsole() {
         if (scanner.hasNextDouble()) {
             return scanner.nextDouble();
         } else {
             informAboutInvalidScannerInput(scanner.next());
-            return getDoubleFromConsole();
+            return receiveDoubleFromConsole();
         }
     }
 
@@ -25,34 +25,34 @@ public class Task08 {
     }
 
     //TODO create javaDoc in order to clarify
-    private static Map<Double, Double> getFunctionValues(double openingPoint,
+    private static Map<Double, Double> computeFunctionValues(double openingPoint,
             double closingPoint, double step) {
         Map<Double, Double> pairsXY = new LinkedHashMap<>();
-        int accuracy = getAccuracyAfterPoint(openingPoint, step);
+        int accuracy = computeAccuracyAfterPoint(openingPoint, step);
         double x = openingPoint;
         while (x <= closingPoint) {
             double y = computeFunction(x);
             pairsXY.putIfAbsent(x, y);
-            x = getAccurateValue(x + step, accuracy);
+            x = computeAccurateValue(x + step, accuracy);
         }
         return pairsXY;
     }
 
-    private static int getAccuracyAfterPoint(double openingPoint, double step) {
-        int digitsNumber = getDigitsNumberAfterPoint(openingPoint);
-        int digitsNumber2 = getDigitsNumberAfterPoint(step);
+    private static int computeAccuracyAfterPoint(double openingPoint, double step) {
+        int digitsNumber = calculateDigitsNumberAfterPoint(openingPoint);
+        int digitsNumber2 = calculateDigitsNumberAfterPoint(step);
         return Math.max(digitsNumber, digitsNumber2);
     }
 
-    private static double getAccurateValue(double realNumber, int accuracy) {
-        int digitsNumberAfterPoint = getDigitsNumberAfterPoint(realNumber);
+    private static double computeAccurateValue(double realNumber, int accuracy) {
+        int digitsNumberAfterPoint = calculateDigitsNumberAfterPoint(realNumber);
         if (digitsNumberAfterPoint > accuracy) {
             realNumber = trimToGetAccurateValue(realNumber, accuracy);
         }
         return realNumber;
     }
 
-    private static int getDigitsNumberAfterPoint(double realNumber) {
+    private static int calculateDigitsNumberAfterPoint(double realNumber) {
         String number = Double.toString(realNumber);
         String[] parts = number.split("[.]");
         return parts[1].length();
@@ -82,14 +82,14 @@ public class Task08 {
     public static void main(String[] args) {
         System.out.println("Please, insert an opening point \"a\" of"
                 + " a line segment.");
-        double openingPoint = getDoubleFromConsole();
+        double openingPoint = receiveDoubleFromConsole();
         System.out.println("Please, insert a closing point \"b\" of"
                 + " a line segment.");
-        double closingPoint = getDoubleFromConsole();
+        double closingPoint = receiveDoubleFromConsole();
         System.out.println("Please, insert a function step \"h\".");
-        double step = getDoubleFromConsole();
+        double step = receiveDoubleFromConsole();
 
-        Map<Double, Double> pairs = getFunctionValues(openingPoint,
+        Map<Double, Double> pairs = computeFunctionValues(openingPoint,
                 closingPoint, step);
         print(pairs);
         scanner.close();

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Task05 {
     private static Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
-    private static int getThreeFiguresNumberFromConsole() {
+    private static int receiveThreeFiguresNumberFromConsole() {
         if (scanner.hasNextInt()) {
             int number = scanner.nextInt();
             if (isThreeDigit(number)) {
@@ -16,7 +16,7 @@ public class Task05 {
         } else {
             informAboutInvalidScannerInput(scanner.next());
         }
-        return getThreeFiguresNumberFromConsole();
+        return receiveThreeFiguresNumberFromConsole();
     }
 
     private static boolean isThreeDigit(int number) {
@@ -63,7 +63,7 @@ public class Task05 {
 
     public static void main(String[] args) {
         System.out.println("Please, insert a three figures number.");
-        int number = getThreeFiguresNumberFromConsole();
+        int number = receiveThreeFiguresNumberFromConsole();
 
         int sumOfDigits = computeAdditionOfDigits(number);
         int productOfDigits = computeMultiplicationOfDigits(number);

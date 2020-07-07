@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class Task06Alternative {
     private static Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
-    private static long getNumberFromConsole() {
+    private static long receiveNumberFromConsole() {
         if (scanner.hasNextLong()) {
             return scanner.nextLong();
         } else {
             informAboutInvalidScannerInput(scanner.next());
-            return getNumberFromConsole();
+            return receiveNumberFromConsole();
         }
     }
 
@@ -20,10 +20,10 @@ public class Task06Alternative {
                 + " long value!\n", input);
     }
 
-    private static long getValidCommonDifferenceFromConsole() {
+    private static long receiveValidCommonDifferenceFromConsole() {
         long commonDifference;
         while (true) {
-            commonDifference = getNumberFromConsole();
+            commonDifference = receiveNumberFromConsole();
             if (commonDifference != 0) {
                 return commonDifference;
             } else {
@@ -33,13 +33,13 @@ public class Task06Alternative {
         }
     }
 
-    private static long getN(long initTerm, long diff, String classType) {
+    private static long computeN(long initTerm, long diff, String classType) {
         boolean isAscending = diff > 0;
         switch (classType) {
             case "Integer":
-                return getNIfInt((int) initTerm, (int) diff, isAscending);
+                return computeNIfInt((int) initTerm, (int) diff, isAscending);
             case "Long":
-                return getNIfLong(initTerm, diff, isAscending);
+                return computeNIfLong(initTerm, diff, isAscending);
             default:
                 return -1;
         }
@@ -50,7 +50,7 @@ public class Task06Alternative {
                 && ((initTerm * difference) < 0);
     }
 
-    private static long getNIfInt(int initTerm, int diff, boolean isAscending) {
+    private static long computeNIfInt(int initTerm, int diff, boolean isAscending) {
         int aN;
         int n = 1;
         int previousSum;
@@ -70,7 +70,7 @@ public class Task06Alternative {
         return n;
     }
 
-    private static long getNIfLong(long initTerm, long difference,
+    private static long computeNIfLong(long initTerm, long difference,
             boolean isAscending) {
         long aN;
         long n = 1;
@@ -94,18 +94,18 @@ public class Task06Alternative {
     public static void main(String[] args) {
         System.out.println("Please, insert an initial term of" +
                 " an arithmetic progression.");
-        long initialTerm = getNumberFromConsole();
+        long initialTerm = receiveNumberFromConsole();
         System.out.println("Please, insert a common difference, which"
                 + " differs from zero.");
-        long commonDifference = getValidCommonDifferenceFromConsole();
+        long commonDifference = receiveValidCommonDifferenceFromConsole();
 
-        long nThTermToExceedIntegerType = getN(initialTerm, commonDifference,
+        long nThTermToExceedIntegerType = computeN(initialTerm, commonDifference,
                 "Integer");
         System.out.printf("The sum of an arithmetic progression exceed"
                         + " Integer type boundaries, when \"N\" = %d%n",
                 nThTermToExceedIntegerType);
 
-        long nThTermToExceedLongType = getN(initialTerm, commonDifference,
+        long nThTermToExceedLongType = computeN(initialTerm, commonDifference,
                 "Long");
         System.out.printf("The sum of an arithmetic progression exceed"
                         + " Long type boundaries, when \"N\" = %d%n",

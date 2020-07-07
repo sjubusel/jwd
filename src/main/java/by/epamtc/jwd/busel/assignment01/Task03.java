@@ -7,12 +7,12 @@ public class Task03 {
     private static Scanner scanner = new Scanner(System.in).useDelimiter("\n")
             .useLocale(Locale.US);
 
-    private static double getDoubleFromConsole() {
+    private static double receiveDoubleFromConsole() {
         if (scanner.hasNextDouble()) {
             return scanner.nextDouble();
         } else {
             informAboutInvalidScannerInput(scanner.next());
-            return getDoubleFromConsole();
+            return receiveDoubleFromConsole();
         }
     }
 
@@ -36,11 +36,11 @@ public class Task03 {
 
     public static void main(String[] args) {
         System.out.println("Please, insert a value of a \"a\" variable.");
-        double a = getDoubleFromConsole();
+        double a = receiveDoubleFromConsole();
         System.out.println("Please, insert a value of a \"b\" variable.");
-        double b = getDoubleFromConsole();
+        double b = receiveDoubleFromConsole();
         System.out.println("Please, insert a value of a \"c\" variable.");
-        double c = getDoubleFromConsole();
+        double c = receiveDoubleFromConsole();
 
         if (doValuesMeetCondition(a, b, c)) {
             a *= 2;
