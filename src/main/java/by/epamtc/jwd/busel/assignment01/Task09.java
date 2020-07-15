@@ -1,8 +1,5 @@
 package by.epamtc.jwd.busel.assignment01;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Task09 {
     private static long computeFunction() {
         long sum = 1;

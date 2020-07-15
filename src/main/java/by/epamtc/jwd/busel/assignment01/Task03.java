@@ -52,5 +52,7 @@ public class Task03 {
             c = Math.abs(c);
         }
         printValues(a, b, c);
+
+        scanner.close();
     }
 }

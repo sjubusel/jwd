@@ -104,5 +104,7 @@ public class Task06 {
         System.out.printf("The sum of an arithmetic progression exceed"
                         + " Long type boundaries, when \"N\" = %d%n",
                 nThTermIfLongMax);
+
+        scanner.close();
     }
 }

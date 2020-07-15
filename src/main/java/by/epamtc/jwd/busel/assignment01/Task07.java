@@ -44,5 +44,7 @@ public class Task07 {
 
         double newRealNumber = compute(integralPart, fractionalPart);
         System.out.printf("A new real number:%n%.3f%n", newRealNumber);
+
+        scanner.close();
     }
 }
